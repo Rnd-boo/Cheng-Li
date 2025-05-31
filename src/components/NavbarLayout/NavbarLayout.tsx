@@ -5,7 +5,7 @@ import { CiSquareQuestion } from "react-icons/ci";
 const NavbarLayout = () => {
   return (
     <nav className="w-fit bg-secondary p-4 flex flex-col items-center gap-4">
-      <a href="/">
+      <Link href="/">
         <svg
           width="40"
           height="28"
@@ -21,7 +21,7 @@ const NavbarLayout = () => {
             fill="#FFFFFF"
           ></path>
         </svg>
-      </a>
+      </Link>
       <Button isIconOnly color="secondary" as={Link} href="/about">
         <CiSquareQuestion className="text-5xl" />
       </Button>
