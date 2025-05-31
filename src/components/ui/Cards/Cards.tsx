@@ -1,22 +1,36 @@
+import { CardData } from "@/types/card";
 import { Input, NumberInput } from "@heroui/react";
-import { useState } from "react";
 import { GrMoney } from "react-icons/gr";
 
-const Cards = ({ index }: { index: number }) => {
-  const [itemName, setItemName] = useState(`Item${index}`);
-  const [price, setPrice] = useState<number | undefined>(undefined);
-  const [amount, setAmount] = useState<number | undefined>(undefined);
+interface CardsProps {
+  cardData: CardData;
+  onUpdateCard: (
+    field: keyof CardData,
+    value: string | number | undefined
+  ) => void;
+}
+
+const Cards = ({ cardData, onUpdateCard }: CardsProps) => {
+  const handleInputName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onUpdateCard("itemName", e.target.value);
+  };
+  const handlePriceChange = (value: number | undefined) => {
+    onUpdateCard("price", value);
+  };
+
+  const handleAmountChange = (value: number | undefined) => {
+    onUpdateCard("amount", value);
+  };
 
   return (
     <div className="mx-10 max-w-[300px] h-40 bg-[#14291C] pb-2 rounded-xl">
       <div className="px-4 py-2 text-white">
         <Input
           isClearable
-          value={itemName}
-          onClear={() => setItemName("")}
-          onChange={(e) => setItemName(e.target.value)}
-          defaultValue={`Item${index}`}
-          label={`Item ${index}`}
+          value={cardData.itemName}
+          onClear={() => onUpdateCard("itemName", "")}
+          onChange={handleInputName}
+          label={`Name`}
           classNames={{
             label: "text-white !text-white ",
           }}
@@ -26,8 +40,8 @@ const Cards = ({ index }: { index: number }) => {
       </div>
       <div className="px-4 pb-2 my-2 flex gap-4 justify-between w-full">
         <NumberInput
-          value={price}
-          onValueChange={(val) => setPrice(val)}
+          value={cardData.price}
+          onValueChange={handlePriceChange}
           color="primary"
           classNames={{
             label: "text-white",
@@ -44,8 +58,8 @@ const Cards = ({ index }: { index: number }) => {
           }
         />
         <NumberInput
-          value={amount}
-          onValueChange={(val) => setAmount(val)}
+          value={cardData.amount}
+          onValueChange={handleAmountChange}
           className="w-1/2"
           color="primary"
           classNames={{
