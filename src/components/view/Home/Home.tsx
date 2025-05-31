@@ -14,10 +14,10 @@ const Home = () => {
     handleCalculate,
   } = useHome();
   return (
-    <div className="bg-black h-screen w-full flex">
+    <div className="md:h-screen h-svh bg-black w-full flex ">
       <NavbarLayout />
 
-      <div className="w-full space-y-6 px-4">
+      <div className="w-full space-y-3 md:space-y-6 px-4 py-4 md:py-0">
         {/* Accordion Section */}
         <Accordion
           isCompact
@@ -30,16 +30,14 @@ const Home = () => {
             subtitle="Press to Expand"
             title="How to Use"
             classNames={{
-              title: "text-white text-center font-bold",
-              content: "text-center text-sm",
+              title: "text-white text-center font-bold text-sm md:text-medium",
+              content: "text-center text-xs md:text-sm",
               subtitle: "text-center",
             }}
           >
             <ul>
               <li>Input/Enter the price of Item</li>
-              <li>
-                Enter Amount (e.g: 100ml type 100) Make sure they same UOM
-              </li>
+              <li>Enter Amount make sure they same UOM (e.g.100ml type 100)</li>
               <li>Then calculate to find the cheapest price item</li>
             </ul>
           </AccordionItem>
@@ -68,7 +66,7 @@ const Home = () => {
             ))}
 
             {cards.length < 4 && (
-              <div className="mx-10 w-[300px] h-40 border bg-[#14291C] items-center justify-center flex pb-2 rounded-xl">
+              <div className="md:mx-10 mx-auto w-[300px] h-40 border bg-[#14291C] items-center justify-center flex pb-2 rounded-xl">
                 <Button
                   onPress={handleAddCard}
                   radius="full"

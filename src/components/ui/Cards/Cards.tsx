@@ -23,7 +23,7 @@ const Cards = ({ cardData, onUpdateCard }: CardsProps) => {
   };
 
   return (
-    <div className="mx-10 max-w-[300px] h-40 bg-[#14291C] pb-2 rounded-xl">
+    <div className="md:mx-10 mx-auto max-w-[300px] h-40 bg-[#14291C] pb-2 rounded-xl">
       <div className="px-4 py-2 text-white">
         <Input
           isClearable
@@ -32,7 +32,7 @@ const Cards = ({ cardData, onUpdateCard }: CardsProps) => {
           onChange={handleInputName}
           label={`Name`}
           classNames={{
-            label: "text-white !text-white ",
+            label: "text-xs md:text-medium text-white !text-white ",
           }}
           color="primary"
           variant="underlined"
@@ -44,7 +44,7 @@ const Cards = ({ cardData, onUpdateCard }: CardsProps) => {
           onValueChange={handlePriceChange}
           color="primary"
           classNames={{
-            label: "text-white",
+            label: "text-xs md:text-medium text-white",
             input: "text-black",
           }}
           label="Price"
@@ -63,7 +63,7 @@ const Cards = ({ cardData, onUpdateCard }: CardsProps) => {
           className="w-1/2"
           color="primary"
           classNames={{
-            label: "text-white",
+            label: "text-xs md:text-medium text-white",
             input: "text-black !text-black",
           }}
           label="Amount"
