@@ -1,4 +1,4 @@
-import NavbarLayout from "@/components/NavbarLayout";
+import AboutButton from "@/components/AboutButton";
 import Cards from "@/components/ui/Cards";
 import { Accordion, AccordionItem, Button } from "@heroui/react";
 import { IoIosAddCircle } from "react-icons/io";
@@ -14,15 +14,13 @@ const Home = () => {
     handleCalculate,
   } = useHome();
   return (
-    <div className="md:h-screen h-svh bg-black w-full flex ">
-      <NavbarLayout />
-
-      <div className="w-full space-y-3 md:space-y-6 px-4 py-4 md:py-0">
+    <div className="md:h-screen min-h-svh bg-black w-full flex ">
+      <AboutButton />
+      <div className="w-full space-y-3 md:space-y-6 px-4 md:px-0 py-4 md:py-0  ">
         {/* Accordion Section */}
         <Accordion
           isCompact
-          className="text-white border-white"
-          variant="bordered"
+          className="text-black bg-content2 md:rounded-none rounded-2xl"
         >
           <AccordionItem
             key="1"
@@ -30,12 +28,12 @@ const Home = () => {
             subtitle="Press to Expand"
             title="How to Use"
             classNames={{
-              title: "text-white text-center font-bold text-sm md:text-medium",
-              content: "text-center text-xs md:text-sm",
+              title: "text-black text-center font-bold text-sm md:text-medium",
+              content: "text-center text-xs md:text-sm flex justify-center",
               subtitle: "text-center",
             }}
           >
-            <ul>
+            <ul className="space-y-1 list-disc list-inside">
               <li>Input/Enter the price of Item</li>
               <li>Enter Amount make sure they same UOM (e.g.100ml type 100)</li>
               <li>Then calculate to find the cheapest price item</li>
@@ -44,8 +42,8 @@ const Home = () => {
         </Accordion>
 
         {/* Cards Section */}
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
-          <div className="flex col-span-2 md:col-span-3 lg:col-span-4 flex-wrap gap-4">
+        <div className="grid w-full ">
+          <div className="flex col-span-2 flex-wrap gap-y-4 md:gap-y-12 ">
             {fixedCards.map((card, index) => (
               <Cards
                 key={card.id}

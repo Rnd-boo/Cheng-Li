@@ -10,7 +10,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(115deg, rgba(69,150,164,1) 2%, rgba(17,20,34,1) 90%)',
+      },
+    },
   },
   darkMode: "class",
   plugins: [
