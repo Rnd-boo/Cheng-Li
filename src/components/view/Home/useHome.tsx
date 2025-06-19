@@ -21,6 +21,8 @@ export const useHome = () => {
     bestPricePerUnit: null,
   });
 
+  const [showAllDetails, setShowAllDetails] = useState(false);
+
   const handleAddCard = () => {
     if (cards.length < 4) {
       const newCard: CardData = {
@@ -99,18 +101,20 @@ export const useHome = () => {
   const handleCalculate = () => {
     const result = calculateBestPrice();
     setCalculation(result);
+    setShowAllDetails(false);
   };
-
   return {
     // State
     cards,
     fixedCards,
     calculation,
+    showAllDetails,
 
     // Actions
     handleAddCard,
     updateCardData,
     handleCalculate,
+    setShowAllDetails,
 
     // Computed values
     allCards: [...fixedCards, ...cards],

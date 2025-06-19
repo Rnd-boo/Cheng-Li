@@ -9,18 +9,21 @@ const Home = () => {
     cards,
     fixedCards,
     calculation,
+    showAllDetails,
     handleAddCard,
     updateCardData,
     handleCalculate,
+    setShowAllDetails,
   } = useHome();
   return (
-    <div className="md:h-screen min-h-svh bg-black w-full flex ">
+    <div className="md:min-h-screen min-h-svh bg-black w-full flex ">
       <AboutButton />
       <div className="w-full space-y-3 md:space-y-6 px-4 md:px-0 py-4 md:py-0  ">
         {/* Accordion Section */}
         <Accordion
           isCompact
-          className="text-black bg-content2 md:rounded-none rounded-2xl"
+          hideIndicator
+          className="text-black bg-content2 md:rounded-none rounded-2xl "
         >
           <AccordionItem
             key="1"
@@ -29,8 +32,8 @@ const Home = () => {
             title="How to Use"
             classNames={{
               title: "text-black text-center font-bold text-sm md:text-medium",
-              content: "text-center text-xs md:text-sm flex justify-center",
-              subtitle: "text-center",
+              content: " text-xs md:text-sm flex justify-center",
+              subtitle: "text-center ",
             }}
           >
             <ul className="space-y-1 list-disc list-inside">
@@ -64,7 +67,7 @@ const Home = () => {
             ))}
 
             {cards.length < 4 && (
-              <div className="md:mx-10 mx-auto w-[300px] h-40 border bg-[#14291C] items-center justify-center flex pb-2 rounded-xl">
+              <div className="hidden md:flex md:mx-10 mx-auto w-[300px] h-40 border bg-[#14291C] items-center justify-center pb-2 rounded-xl">
                 <Button
                   onPress={handleAddCard}
                   radius="full"
@@ -85,8 +88,27 @@ const Home = () => {
             Calculate
           </Button>
           {calculation.bestItem && (
-            <div className="text-white text-center space-y-2">
+            <div className="text-white text-center space-y-4">
               <h1>Cheapest Item: {calculation.bestItem}</h1>
+
+              <Button
+                size="sm"
+                onPress={() => setShowAllDetails((prev) => !prev)}
+              >
+                {showAllDetails ? "Hide Details" : "Show Details?"}
+              </Button>
+              {showAllDetails && calculation.allCalculations && (
+                <div className="flex mt-4 gap-4 text-sm text-left pb-4">
+                  {calculation.allCalculations.map((card) => (
+                    <div key={card.id} className="bg-gray-800 p-2 rounded">
+                      <p>
+                        <strong>{card.itemName}</strong>
+                      </p>
+                      <p>Price per Unit: {card.pricePerUnit.toFixed(2)}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>

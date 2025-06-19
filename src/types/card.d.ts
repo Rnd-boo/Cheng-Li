@@ -5,11 +5,12 @@ interface CardData {
   amount: number | undefined;
 }
 
-  interface CalculationResult {
-    itemName: string;
-    price: number;
-    amount: number;
-    pricePerUnit: number;
-  }
+interface CalculationResult {
+  id: string;
+  itemName: string;
+  price: number;
+  amount: number;
+  pricePerUnit: number;
+}
 
-export {CardData, CalculationResult}
+export { CardData, CalculationResult };
